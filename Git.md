@@ -1,0 +1,129 @@
+# Git
+大家可以去阅读廖雪峰的Git教程，他的教程目的性比较强，就是让你掌握Git的基本用法，我现在的这个目录完全就是照着他的Git教程建起来的。
+我觉得够用了，太高级的功能也不适合我，我只要掌握基本的使用功能足以。
+## Git概念和原理
+Git是分布式版本控制系统Distributed Vernsion Control System，他有一个核心的逻辑是，Git跟踪并管理的是“修改”。
+Git分为三个区域：  
+- 工作区working directory，就是你建立的文件夹目录
+- 版本库repository  
+    - stage暂存区  
+    - head指向git创建的第一个master分支  
+master分支是主分支  
+- head指针：git内部的一个指针，指向当前的版本  
+
+## 常见注意事项
+- 不要用windows自带的记事本工具编辑文档，会产生编码错误
+## Git常用指令
+### Git安装
+- Windows  
+因为我用的windows，所以只记录windows的，其他版本大家自行学习  
+从官网下载Git程序https://git-scm.com/downloads，安装完成后，运行Git-Bash，出现命令行窗口即代表成功。  
+安装完成后，还需要最后一步设置，在命令行输入：  
+$ git config --global user.name "Your Name"  
+$ git config --global user.email "email@example.com"  
+因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。
+注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。  
+- git config  参数：--global
+见上  
+- pwd  
+显示当前目录，尽量不要使用中文目录  
+- mkdir  
+创建一个空目录  
+- git init  
+把这个目录变成git可以管理的仓库  
+- ls 参数：-ah  
+- dir
+ls和dir都可以显示当前目录文件，-ah参数表示同时显示隐藏文件  
+- rm和git rm  
+rm可以直接删除工作区的文件，git rm+git commit可以删除版本库中的文件
+
+### git提交和管理修改
+- git add  
+git add添加修改到缓存区，可以一次添加多个文件或者多次添加
+- git commit 参数：-m  
+git commit表示将文件提交到仓库，-m表示为本次提交添加说明  
+- git checkout -- filename（必须要--，要不然命令变成切换分支了）  
+把readme.txt文件在工作区的修改全部撤销，就是让这个文件回到最近一次git commit或git add时的状态。  
+
+### Git查询命令
+- git status  
+查看当前仓库的状态  
+- git diff  
+查询最近的修改
+- git diff head -- file_name  
+查看工作区和版本库最新版本的差别
+- git log  参数：--pretty=oneline
+查看每一次的提交日志，参数--pretty=oneline表示逐行显示  
+- git reflog  
+查看每一次的命令历史日志
+
+### Git回退
+- git reset  
+git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。  
+- git reset --hard HEAD^  
+返回上一个版本  
+- git reset --hard commit_id  
+返回指定commit_id的版本  
+
+### 管理分支
+- git checkout -b branch_name  
+-b参数表示创建并切换到一个新的分支，相当于下面两个命令  
+- git branch dev  
+- git checkout dev  
+- git branch  
+可以查看当前分支
+- git branch -d  name
+删除分支
+- git merge  
+合并指定分支到当前分支  
+- git log --graph  
+查看分支合并图
+- git switch -c  
+创建并切换分支  
+- git merge --no-ff -m "merge with no-ff" dev  
+--on-ff表示禁用fast forward  
+- git stash  
+临时存储分支，可以后续接着工作  
+- git stash list  
+查看存储的分支
+- git branch -D name  
+强行删除分支  
+- git checkout -b dev origin/dev
+创建远程库的分支到本地
+- git pull  
+
+
+
+## 创建远程仓库
+### 创建SSH key
+- ssh-keygen -t rsa -C "youremail@example.com"  
+你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可。  
+如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+- 登录github，找到add ssh key，添加id_rsa.pub的内容
+
+### 推送到远程库  
+- git push -u origin master  
+由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。  
+- git push origin master
+每次本地提交后，使用这个命令提交到远程库
+- git clone git@github.com:sample/sample.git  
+克隆远程库到本地，url是github库的url，用git@github.com:开头的地址，这可以看成是一种url格式
+- git remote -v  
+查看远程库详细信息，不带参数只显示远程库名字
+- git remote rm <name>  
+删除远程库，只是删除连个电脑的链接，并不是物理上删除了远程库
+
+
+## 标签管理
+- git tag name commit_id  
+为特定的commit id打上标签  
+- git show tagname  
+显示标签信息  
+- git tag -d tagname  
+删除标签  
+- git push origin v1.0  
+推送某个标签到远程  
+- git push origin :refs/tags/v0.9  
+先用git tag -d删除本地在用这条命令删除远程标签
+
