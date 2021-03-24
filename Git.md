@@ -9,7 +9,7 @@ Git分为三个区域：
     - stage暂存区  
     - head指向git创建的第一个master分支  
 master分支是主分支  
-- head指针：git内部的一个指针，指向当前的版本  
+- head指针：git内部的一个指针，指向当前分支版本顶端，也就是在当前分支你最近的一个提交  
 
 ## 常见注意事项
 - 不要用windows自带的记事本工具编辑文档，会产生编码错误
@@ -60,10 +60,13 @@ git commit表示将文件提交到仓库，-m表示为本次提交添加说明
 ### Git回退
 - git reset  
 git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。  
+git reset不会产生commit，它仅仅更新一个branch指向另外一个commit。  
 - git reset --hard HEAD^  
 返回上一个版本  
 - git reset --hard commit_id  
 返回指定commit_id的版本  
+- git revert  
+撤销
 
 ### 管理分支
 - git checkout -b branch_name  
@@ -91,7 +94,9 @@ git reset命令既可以回退版本，也可以把暂存区的修改回退到�
 - git checkout -b dev origin/dev
 创建远程库的分支到本地
 - git pull  
-
+同步远程库分支到本地  
+- git pull rebase  
+把远程库中的跟新合并到本地库中（可能存在冲突需要解决），--rebase的作用是取消本地库中刚刚提交的commit，并把他们接到更新后的版本库中。
 
 
 ## 创建远程仓库
