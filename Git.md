@@ -14,14 +14,17 @@ master分支是主分支
 ## 常见注意事项
 - 不要用windows自带的记事本工具编辑文档，会产生编码错误
 ## Git常用指令
+
 ### Git安装
 - Windows  
 因为我用的windows，所以只记录windows的，其他版本大家自行学习  
-从官网下载Git程序https://git-scm.com/downloads，安装完成后，运行Git-Bash，出现命令行窗口即代表成功。  
+从官网下载Git程序[git link](https://git-scm.com/downloads)，安装完成后，运行Git-Bash，出现命令行窗口即代表成功。  
+
+### 为你的电脑git交互起一个名字和邮箱，便于识别不同用户
 安装完成后，还需要最后一步设置，在命令行输入：  
 $ git config --global user.name "Your Name"  
 $ git config --global user.email "email@example.com"  
-因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。
+因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。我自己试验了用不同名字不同邮箱是可以的，可能它的主要作用就是用来标识吧，就跟名片类似的感觉  
 注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。  
 - git config  参数：--global
 见上  
@@ -29,8 +32,9 @@ $ git config --global user.email "email@example.com"
 显示当前目录，尽量不要使用中文目录  
 - mkdir  
 创建一个空目录  
-- git init  
-把这个目录变成git可以管理的仓库  
+- ==git init==  
+==把这个目录变成git可以管理的仓库，这个步骤很重要，务必使用一个空白目录，只有先创建了git目录，
+下面的工作才可以开展，因为我第一次就直接用命令，结果一直提示没有可以用的仓库，就是这个原因导致的。==  
 - ls 参数：-ah  
 - dir
 ls和dir都可以显示当前目录文件，-ah参数表示同时显示隐藏文件  
@@ -99,19 +103,23 @@ git reset不会产生commit，它仅仅更新一个branch指向另外一个commi
 把远程库中的跟新合并到本地库中（可能存在冲突需要解决），--rebase的作用是取消本地库中刚刚提交的commit，并把他们接到更新后的版本库中。
 
 
-## 创建远程仓库
-### 创建SSH key
+## 远程仓库的创建、连接和管理
+### 第一步：创建SSH key
 - ssh-keygen -t rsa -C "youremail@example.com"  
 你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可。  
-如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
-- 登录github，找到add ssh key，添加id_rsa.pub的内容
+如果一切顺利的话，可以在用户主目录里找到.ssh目录，windows的用户主目录是c:\users\yourname。  
+里面有id_rsa和id_rsa.pub两个文件，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+### 第二步：将id_rsa.pub的信息复制到github中
+- 登录github，找到add ssh key，添加id_rsa.pub的内容(文件可以用文本编辑器打开，不要用windows自带的编辑器-因为我遵从老师的建议不用windows记事本）  
 
 ### 推送到远程库  
 - git push -u origin master  
 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
 还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。  
 - git push origin master
-每次本地提交后，使用这个命令提交到远程库
+每次本地提交后，使用这个命令提交到远程库  
+
+### 从远程库克隆
 - git clone git@github.com:sample/sample.git  
 克隆远程库到本地，url是github库的url，用git@github.com:开头的地址，这可以看成是一种url格式
 - git remote -v  
