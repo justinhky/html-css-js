@@ -18,36 +18,36 @@ HTML 语言忽略缩进和换行
 ### 1.4 属性  
 属性不区分大小写，用来定制标签的行为  
 ## 2. 网页的基本标签  
-- <!DOCTYPE>  
+<!DOCTYPE>  
 ```
 <!DOCTYPE html>
 ```  
-- <html>  
+<html>  
 ```
 <html lang="zh-CN">
 ```  
 
-- <head>  
-    - <meta>
-    - <link>
-    - <title>
-    - <style>
-    - <script>
-    - <noscript>
-    - <base>
-- <meta>  
+<head>  
+    <meta>
+    <link>
+    <title>
+    <style>
+    <script>
+    <noscript>
+    <base>
+<meta>  
 ```
 <meta charset="utf-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 ```  
 
 meta表示元数据，用于设置或者说明网页的元数据，网页可以有多个meta标签，meta标签约定放在head内容的最前面。常见的元数据有keywords, description, author, etc。  
-- <title>  
-- <body>  
+<title>  
+<body>  
 ## 3. 空格和换行  
 HTML忽略内容的头部和尾部的空格，会合并内容中间的空格成制表符\t，html还会将文本里面的换行\n和回车\r，替换成空格。  
 ## 4. 注释  
-- <!-- words -->注释内容不会显示在网页上，但可以在源代码中查看。  
+<!-- words -->注释内容不会显示在网页上，但可以在源代码中查看。  
 
 ## 5. URL简介  
 url是“统一资源定位符”uniform resource locator"的首字母缩写，中文是网址  
