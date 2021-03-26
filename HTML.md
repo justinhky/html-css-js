@@ -18,7 +18,7 @@ HTML 语言忽略缩进和换行
 ### 1.4 属性  
 属性不区分大小写，用来定制标签的行为  
 ## 2. 网页的基本标签  
-"
+```
 <!DOCTYPE>  
 <!DOCTYPE html>
 <html>  
@@ -32,7 +32,7 @@ HTML 语言忽略缩进和换行
     <script>
     <noscript>
     <base>
-"
+```
 <meta>  
 <meta charset="utf-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
