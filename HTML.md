@@ -19,9 +19,14 @@ HTML 语言忽略缩进和换行
 属性不区分大小写，用来定制标签的行为  
 ## 2. 网页的基本标签  
 - <!DOCTYPE>  
-```<!DOCTYPE html>```
+```
+<!DOCTYPE html>
+```  
 - <html>  
-```<html lang="zh-CN">```
+```
+<html lang="zh-CN">
+```  
+
 - <head>  
     - <meta>
     - <link>
@@ -31,8 +36,11 @@ HTML 语言忽略缩进和换行
     - <noscript>
     - <base>
 - <meta>  
-```<meta charset="utf-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1">```  
+```
+<meta charset="utf-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+```  
+
 meta表示元数据，用于设置或者说明网页的元数据，网页可以有多个meta标签，meta标签约定放在head内容的最前面。常见的元数据有keywords, description, author, etc。  
 - <title>  
 - <body>  
@@ -71,7 +79,8 @@ url各个部分只能使用以下字符：
 ···<head>
 <base href="https://www.example.com/files/" target="_blank">
 </head>···  
-注意，<base>标签必须至少具有href属性或target属性之一。一旦设置了<base>，就对整个网页都有效。如果要改变某个链接的行为，只能用绝对链接替代相对链接。尤其需要注意锚点，这时锚点也是针对<base>计算的，而不是针对当前网页的 URL。  
+注意，<base>标签必须至少具有href属性或target属性之一。一旦设置了<base>，就对整个网页都有效。如果要改变某个链接的行为，只能用绝对链接替代相对链接。
+尤其需要注意锚点，这时锚点也是针对<base>计算的，而不是针对当前网页的 URL。  
 
 
 
