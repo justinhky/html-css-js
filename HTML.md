@@ -31,11 +31,11 @@ HTML 语言忽略缩进和换行
     <style>
     <script>
     <noscript>
-    <base>
-```
+    <base>  
 <meta>  
 <meta charset="utf-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
+```
 meta表示元数据，用于设置或者说明网页的元数据，网页可以有多个meta标签，meta标签约定放在head内容的最前面。常见的元数据有keywords, description, author, etc。  
 <title>  
 <body>  
