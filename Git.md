@@ -113,6 +113,8 @@ git reset不会产生commit，它仅仅更新一个branch指向另外一个commi
 - 登录github，找到add ssh key，添加id_rsa.pub的内容(文件可以用文本编辑器打开，不要用windows自带的编辑器-因为我遵从老师的建议不用windows记事本）  
 
 ### 推送到远程库  
+- git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
+如果本地分支名与远程分支名相同，则可以省略冒号：及后面的内容“git push &lt;远程主机名&gt; &lt;本地分支名&gt;”
 - git push -u origin master  
 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
 还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。  
