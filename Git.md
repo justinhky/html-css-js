@@ -52,10 +52,20 @@ git commit表示将文件提交到仓库，-m表示为本次提交添加说明
 ### Git查询命令
 - git status  
 查看当前仓库的状态  
+```
+git status -uno, 不显示未跟踪的文件(git status --untracked-files=no)
+```
+- git fetch origin
+update the remote branch in your repository to point to the latest version.
 - git diff  
 查询最近的修改
 - git diff head -- file_name  
 查看工作区和版本库最新版本的差别
+```
+git diff origin/master, 或者 git diff head origin/master
+//if you want to accept the remote changes, apply:
+git merge origin/master
+```
 - git log  参数：--pretty=oneline
 查看每一次的提交日志，参数--pretty=oneline表示逐行显示  
 - git reflog  
