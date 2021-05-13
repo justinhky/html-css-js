@@ -9,7 +9,11 @@ html is hypertext markup language由欧洲核子研究中心的物理学家蒂�
 ## 1. 网页的基本概念
 ### 1.1 标签  
 网页的 HTML 代码由许许多多不同的标签（tag）构成。学习 HTML 语言，就是学习各种标签的用法。  
-HTML 语言忽略缩进和换行  
+HTML 语言忽略缩进和换行
+
+note:https://www.w3cplus.com/a11y/writing-html-with-accessibility-in-mind.html
+这篇文章对html标签及语义化讲解的非常好，值得一读。
+
 ### 1.2 元素  
 浏览器渲染网页时，会把 HTML 源码解析成一个标签树，每个标签都是树的一个节点（node）。这种节点就称为网页元素（element）。
 所以，“标签”和“元素”基本上是同义词，只是使用的场合不一样：标签是从源码角度来看，元素是从编程角度来看，比如p标签对应网页的p元素。  
